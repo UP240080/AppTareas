@@ -4,7 +4,7 @@ import { Platform } from "react-native";
 const API_URL =
   Platform.OS === "web"
     ? "http://localhost:3000/todos"
-    : "http://192.168.1.67:3000/todos";
+    : "http://10.0.0.18:3000/todos";
 
 export const getTasks = async () => {
   const res = await fetch(API_URL);
@@ -34,10 +34,7 @@ export const createTask = async (task: any) => {
   return json;
 };
 
-export const updateTask = async (
-  id: number,
-  task: Omit<Task, "id">
-) => {
+export const updateTask = async (id: number, task: Omit<Task, "id">) => {
   const res = await fetch(`${API_URL}/${id}`, {
     method: "PUT",
     headers: {
